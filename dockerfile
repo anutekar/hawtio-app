@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-jre-alpine
 
-ENV HAWTIO_VERSION=4.4.0
+ENV HAWTIO_VERSION=3.0-M6
 ENV HAWTIO_HOME=/opt/hawtio
 
 RUN apk add --no-cache curl \
