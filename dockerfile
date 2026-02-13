@@ -7,10 +7,10 @@ RUN apk add --no-cache curl \
  && mkdir -p ${HAWTIO_HOME}
 
 # Download latest hawtio WAR
-RUN curl -L https://repo1.maven.org/maven2/io/hawt/hawtio-app/${HAWTIO_VERSION}/hawtio-app-${HAWTIO_VERSION}.war -o ${HAWTIO_HOME}/hawtio.war
+RUN curl -L https://repo1.maven.org/maven2/io/hawt/hawtio-app/${HAWTIO_VERSION}/hawtio-app-${HAWTIO_VERSION}.jar -o ${HAWTIO_HOME}/hawtio.jar
 
 WORKDIR ${HAWTIO_HOME}
 
 EXPOSE 8080
 
-CMD ["java","-jar","hawtio.war"]
+CMD ["java","-jar","hawtio.jar"]
