@@ -1,5 +1,27 @@
 pipeline {
-    agent any
+    agent {
+    kubernetes {
+      defaultContainer 'docker'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: docker
+    image: docker:26.1.4
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+    - name: docker-sock
+      mountPath: /var/run/docker.sock
+  volumes:
+  - name: docker-sock
+    hostPath:
+      path: /var/run/docker.sock
+"""
+    }
+  }
 
     environment {
         IMAGE_NAME = "autekar/hawtio"
